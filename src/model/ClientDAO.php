@@ -15,7 +15,7 @@ class ClientDAO implements DAOInterface {  // Correction: implements DAOInterfac
      * @return AbstractEntity
      * @throws ModelException Dans le cas où l'enregistrement a rencontré une erreur
      */
-    public function create(AbstractEntity &$entity): AbstractEntity {
+    public function create(AbstractEntity $entity): AbstractEntity {
         /** @var ClientEntity $client */
         $client = $entity;
         try {
