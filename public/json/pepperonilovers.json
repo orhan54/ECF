@@ -1,0 +1,9 @@
+
+{
+    "image": "https://api.pizzahut.io/v1/content/fr-fr/fr-1/images/pizza/pepperoni.fb8811efbc2a4e2bb93a5104105fbe55.1.jpg?width=251",
+    "name": "Pepperoni Lovers",
+    "description": "Sauce tomate à l'origan, mozzarella et saucisse pepperoni",
+    "base": "2",
+    "prix": "12",
+    "devise": "€"
+}

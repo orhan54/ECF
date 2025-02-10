@@ -1,0 +1,9 @@
+
+{
+    "image": "https://api.pizzahut.io/v1/content/fr-fr/fr-1/images/pizza/texane-bbq.e3da8a34b71cb60568395e75a0a17a25.1.jpg?width=251",
+    "name": "Texane barbecue",
+    "description": "Sauce barbecue, mozzarella, jambon, émietté au boeuf, lardons, champignons frais et oignons rouges frais",
+    "base": "2",
+    "prix": "11.20",
+    "devise": "€"
+}

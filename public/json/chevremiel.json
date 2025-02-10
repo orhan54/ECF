@@ -1,0 +1,9 @@
+
+{
+    "image": "https://api.pizzahut.io/v1/content/fr-fr/fr-1/images/pizza/chevre-miel.9eb603403b24fabaca62f3986a6cd028.1.jpg?width=251",
+    "name": "Chèvre Miel",
+    "description": "Crème fraîche légère, mozzarella, fromage de chèvre, miel",
+    "base": "1",
+    "prix": "10.50",
+    "devise": "€"
+}

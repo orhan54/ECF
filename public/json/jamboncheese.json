@@ -1,0 +1,9 @@
+
+{
+    "image": "https://api.pizzahut.io/v1/content/fr-fr/fr-1/images/pizza/jambon-fromage.50a6588ec05a3bc0265bb6c8cbee5c85.1.jpg?width=251",
+    "name": "Jambon Cheese",
+    "description": "Sauce tomate à l'origan, mozzarella, jambon",
+    "base": "2",
+    "prix": "11.50",
+    "devise": "€"
+}

@@ -1,0 +1,9 @@
+
+{
+    "image": "https://api.pizzahut.io/v1/content/fr-fr/fr-1/images/pizza/hut-burger.39be291a074e16f2e74b21c93330e064.1.jpg?width=251",
+    "name": "Hut Burger",
+    "description": "Sauce Barbecue mozzarella haché au boeuf poivrons frais cheddar râpé, sauce burger Heinz",
+    "base": "2",
+    "prix": "11.90",
+    "devise": "€"
+}

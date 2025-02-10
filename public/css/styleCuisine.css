@@ -1,0 +1,30 @@
+
+#recu {
+    display: inline-block;
+    justify-content: space-between;
+    background-color: lightgrey;
+    border-radius: 10px;
+    height: 300px;
+    width: 350px;
+}
+
+#terminer {
+    background-color: lightgrey;
+    border-radius: 10px;
+    width: 350px;
+    height: 300px;
+}
+
+#livrer {
+    background-color: lightgrey;
+    border-radius: 10px;
+    height: 200px;
+    width: 700px;
+    margin-left: 200px;
+}
+
+button {
+    margin: 5px;
+    float: inline-end;
+}
+

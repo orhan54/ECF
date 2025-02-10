@@ -1,0 +1,9 @@
+
+{
+    "image": "https://api.pizzahut.io/v1/content/fr-fr/fr-1/images/pizza/margherita.2844d9a9225b3af1e5d41683994fd5c0.1.jpg?width=251",
+    "name": "Margherita",
+    "description": "Sauce tomate à l'origan et mozzarella",
+    "base": "2",
+    "prix": "9.50",
+    "devise": "€"
+}

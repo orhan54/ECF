@@ -1,0 +1,9 @@
+
+{
+    "image": "https://api.pizzahut.io/v1/content/fr-fr/fr-1/images/pizza/vegetar.97158809ec3ea0dff75f141c2cb4e637.1.jpg?width=251",
+    "name": "Végétarienne",
+    "description": "Sauce tomate à l'origan, mozzarella, champignons frais, oignons rouges frais, poivons verts frais, tomates fraîches et Olives noires",
+    "base": "3",
+    "prix": "11.50",
+    "devise": "€"
+}

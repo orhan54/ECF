@@ -1,0 +1,9 @@
+
+{
+    "image": "https://api.pizzahut.io/v1/content/fr-fr/fr-1/images/pizza/bpm.3cc2710b09c4865b85893464ce6ef097.1.jpg?width=251", 
+    "name": "BPM",
+    "base": "2",
+    "description": "Sauce Barbecue mozzarella émietté au boeuf poulet rôti et mergez",
+    "prix": "10.90",
+    "devise": "€"
+}

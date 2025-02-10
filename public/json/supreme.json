@@ -1,0 +1,9 @@
+
+{
+    "image": "https://api.pizzahut.io/v1/content/fr-fr/fr-1/images/pizza/supreme.c6c6e1ad225d15e9e2e555fa85ddd25b.1.jpg?width=251",
+    "name": "Suprême",
+    "description": "Sauce tomate à l'origan, mozzarella, émietté au boeuf, saucisse pepperoni, champigonns frais, oignons rouges frais et poirvrons verts frais",
+    "base": "2",
+    "prix": "12.50",
+    "devise": "€"
+}

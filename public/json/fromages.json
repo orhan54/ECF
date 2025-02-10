@@ -1,0 +1,9 @@
+
+{
+    "image": "https://api.pizzahut.io/v1/content/fr-fr/fr-1/images/pizza/fromage.5b685edb664e88463b1f624844f88da3.1.jpg?width=251",
+    "name": "4 fromages",
+    "description": "Sauce tomate à l'origan mozzarella fromage de chèvre et Fourme d'Ambert AOP",
+    "base": "2",
+    "prix": "11",
+    "devise": "€"
+}

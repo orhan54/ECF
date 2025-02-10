@@ -1,0 +1,9 @@
+
+{
+    "image": "https://api.pizzahut.io/v1/content/fr-fr/fr-1/images/pizza/croq-monsieur.a4ac652ae3ca5949741c6f7d65842e33.1.jpg?width=251",
+    "name": "CroqMonsieur",
+    "description": "Crème fraîche légère, Mozzarella, Jambon et Emmental",
+    "base": "1",
+    "prix": "11.50",
+    "devise": "€"
+}

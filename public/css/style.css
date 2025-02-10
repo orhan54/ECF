@@ -1,0 +1,131 @@
+/* -- Variable CSS couleur primaire et la couleur des boutton cote admin -- */
+:root {
+  --colorPrimaire: #aaaaaa;
+  --colorBoutonCommande: green;
+}
+
+/* -- Rénitialisation des bordures et fixer un font-size dans la racine -- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  
+}
+
+/* -- Version desktop settings navBar et le coté dur de html -- */
+body {
+  background: url("../images/BG.jpg") no-repeat center center fixed;
+  background-size: cover;
+  /* font-size: clamp(2rem, -0.875rem + 8.333vw, 5rem); */
+}
+
+#enseigne {
+  font-size: 3rem;
+  color: var(--colorPrimaire);
+  font-family: "Lobster&family";
+  font-family: "Lobster", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.nav-item a {
+  font-size: 1.5rem;
+  color: var(--colorPrimaire);
+  font-family: "Lobster&family";
+  font-family: "Lobster", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.card {
+  margin-bottom: 20px;
+  box-shadow: 3px 3px 10px whitesmoke;
+  flex-wrap: nowrap;
+  width: 18rem;
+}
+
+.card-footer>p {
+  font-family: "Lobster&family";
+  font-family: "Lobster", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.modal-footer {
+  display: inline-block;
+}
+
+/* -- Version Mobile S -- */
+@media screen and (max-width: 320px) {
+  .card {
+    height: 520px;
+    width: 18rem;
+    margin-bottom: 20px;
+    margin: auto;
+  }
+
+  #filtre-pizza {
+    display: none;
+  }
+}
+
+/* -- Version Mobile M 320px -- */
+@media screen and (min-width: 321px) and (max-width: 374px) {
+  .card {
+    height: 520px;
+    width: 20rem;
+    margin-bottom: 20px;
+    margin: auto;
+  }
+
+  #filtre-pizza {
+    display: none;
+  }
+}
+
+/* -- Version Mobile L 375px -- */
+@media screen and (min-width: 375px) and (max-width: 424px) {
+  .card {
+    height: 520px;
+    width: 20rem;
+    margin-bottom: 20px;
+    margin: auto;
+  }
+}
+
+/* -- Version Mobile L 425px -- */
+@media screen and (min-width: 425px) and (max-width: 767px) {
+  .card {
+    height: 520px;
+    width: 20rem;
+    margin-bottom: 20px;
+    margin: auto;
+  }
+}
+
+/* -- Version Tablette 768px -- */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .card {
+    height: 520px;
+    width: 20rem;
+    margin-bottom: 20px;
+    margin: auto;
+  }
+}
+
+/* -- Version Ordinateur portable 1024px  -- */
+@media screen and (min-width: 1024px) and (max-width: 2560px) {
+
+    .card {
+      height: 520px;
+      width: 20rem;
+      margin-bottom: 20px;
+      margin: auto;
+    }
+
+    #menu-mobile {
+      display: none;
+    }
+  }
+

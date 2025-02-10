@@ -1,0 +1,9 @@
+
+{
+    "image": "https://api.pizzahut.io/v1/content/fr-fr/fr-1/images/pizza/orientale.d0426a4844e04cb5792a0244e2ba4130.1.jpg?width=251",
+    "name": "Orientale",
+    "description": "Sauce tomate à l'origan, mozzarella, merguez et champignons frais",
+    "base": "2",
+    "prix": "11.50",
+    "devise": "€"
+}
