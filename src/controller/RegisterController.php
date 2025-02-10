@@ -43,7 +43,7 @@ class RegisterController implements ControllerInterface {
         $password = $_POST['password'];
         $nom = $_POST['nom'];
         $prenom = $_POST['prenom'];
-        $numero = $_POST['numero'];
+        $telephone = $_POST['telephone'];
         $adresse = $_POST['adresse'];
         $ville = $_POST['ville'];
         $newClient = new ClientEntity();
@@ -52,7 +52,7 @@ class RegisterController implements ControllerInterface {
             ->setClientPassword($password)
             ->setClientNom($nom)
             ->setClientPrenom($prenom)
-            ->setClientNumero($numero)
+            ->setClientTelephone($telephone)
             ->setClientAdresse($adresse)
             ->setClientVille($ville);
         $this->model->create($newClient);

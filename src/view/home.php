@@ -53,8 +53,8 @@ ob_start();
                                     <input type="text" class="form-control" id="prenom" placeholder="Entrez votre prénom">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="numero" class="form-label">Numéro</label>
-                                    <input type="text" class="form-control" id="numero" placeholder="Entrez votre numéro">
+                                    <label for="telephone" class="form-label">Numéro</label>
+                                    <input type="text" class="form-control" id="telephone" placeholder="Entrez votre numéro">
                                 </div>
                                 <div class="mb-3">
                                     <label for="adresse" class="form-label">Adresse</label>
@@ -113,22 +113,9 @@ ob_start();
 
 <section class="container d-flex flex-column mt-4">
     <div id="mon-contenu" class="row">
-        <?php foreach ($pizzas as $pizza): ?>
-            <div class="card mb-3">
-                <img src="<?= $pizza['pizza_image'] ?>" class="card-img-top" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title"><?= $pizza['pizza_nom'] ?></h5>
-                    <p class="card-text"><?= $pizza['pizza_description'] ?></p>
-                </div>
-                <div class="card-footer row">
-                    <a href="#" class="btn btn-secondary col-4">Ajouter</a>
-                    <a href="#" class="col-2 offset-3 mb-4 mt-3"><i class="bi bi-dash-circle-fill col-2 text-danger h4"></i></a>
-                    <span class="col-2 ms-3 mt-3">0</span>
-                    <a href="#" class="col-2 mb-4 mt-3"><i class="bi bi-plus-circle-fill col-4 mb-3 mt-3 text-success h4"></i></a>
-                    <p class="col-4 offset-4"><?= $pizza['pizza_prix'] ?>€</p>
-                </div>
-            </div>
-        <?php endforeach; ?>
+
+        <!-- Ici seront affichées les pizzas -->
+        
     </div>
 </section>
 
