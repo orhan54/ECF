@@ -41,11 +41,11 @@ class ComposeDAO implements DAOInterface {
         $sql = 'INSERT INTO compose (id_pizza, id_ingredient) VALUES (?, ?)';
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([
-            $compose->getComposePizzaId(), 
+            $compose->getComposePizzaId(),
             $compose->getComposeIngredientId()
         ]);
         
-        $compose->setComposeId($this->pdo->lastInsertId());       // setComposeId() n'existe pas dans ComposeEntity voir solution dans la suite  !!!
+        $compose->setComposePizzaId($this->pdo->lastInsertId());
         return $compose;
     }
 

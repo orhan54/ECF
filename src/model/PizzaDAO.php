@@ -16,13 +16,17 @@ class PizzaDAO implements DAOInterface {
     }
 
     public function readAll(): array {
-        $sql = 'SELECT * FROM pizza
-                -- JOIN compose
-                -- ON pizza.id_pizza = compose.id_pizza
-                -- JOIN ingredient
-                -- ON compose.id_ingredient = ingredient.id_ingredient
-                JOIN base
-                ON pizza.id_base = base.id_base';
+        $sql = "SELECT pizza.nom_pizza, base.nom_base, pizza.prix_pizza, image.chemin_image, image.description_image, GROUP_CONCAT(ingredient.nom_ingredient SEPARATOR ',') as nom_ingredient
+        FROM pizza
+        JOIN base
+        ON base.id_base = pizza.id_base
+        JOIN compose
+        ON compose.id_pizza = pizza.id_pizza
+        JOIN ingredient
+        ON compose.id_ingredient = ingredient.id_ingredient
+        JOIN image
+        ON image.id_pizza = pizza.id_pizza
+        GROUP BY pizza.nom_pizza";
         $stmt = $this->pdo->query($sql);
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }

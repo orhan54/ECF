@@ -14,27 +14,34 @@ const additionalFields = document.getElementById('additionalFields');
 
 // recuperation des donnees json en retour d'un tableau
 (async function recuperDonnees() {
-    let response = await fetch('index.php?route=pizza')
-    .then(response => response.json())
-    const data =response;
-    tabJson = data;
-    afficherContenu(tabJson);
+    try {
+        let response = await fetch('index.php?route=pizza')
+        .then(response => response.json())
+        const data = response;
+        tabJson = data;
+        afficherContenu(tabJson);
+    } catch (error) {
+        console.error('Erreur lors de la récupération des données', error);
+    }
+
 }());
 
 // creation des cards avec les donnes recuperer de mon tableau de donnees json avec la function(async recupererDonnees)
 function afficherContenu(dataJson) {
     monContenu.innerHTML = ""; // Vider le conteneur avant d'ajouter les nouvelles cartes
 
+    console.log(dataJson);
+
     for (let i = 0; i < dataJson.length; i++) {
         const maCard = document.createElement('div');
         let monImageCard = document.createElement('img');
-        monImageCard.setAttribute("src", dataJson[i].pizza_image);
+        monImageCard.setAttribute("src", dataJson[i].chemin_image);
         monImageCard.setAttribute("alt", "Card image cap");
         let monCardBody = document.createElement('div'); //ma div de ma card avec le titre H5, son paragraphe et le boutton de ma card
         let monH5Card = document.createElement('h5');
-        monH5Card.textContent = (dataJson[i].pizza_nom);
+        monH5Card.textContent = (dataJson[i].nom_pizza);
         let monParaCard = document.createElement('p');
-        monParaCard.textContent = (dataJson[i].pizza_description);
+        monParaCard.textContent = (dataJson[i].nom_ingredient);
         let monFooterCard = document.createElement('div');
         let monACard = document.createElement('a');
         monACard.setAttribute("href", "#");
@@ -50,7 +57,7 @@ function afficherContenu(dataJson) {
         plusAPizza.setAttribute("id", "compt-plus");
         let plusCard = document.createElement('i');
         let prixCard = document.createElement('p');
-        prixCard.textContent = (dataJson[i].pizza_prix + "€");
+        prixCard.textContent = parseFloat(dataJson[i].prix_pizza + "€").toFixed(2);
 
         maCard.classList.add("card");
         maCard.classList.add("mb-3");
@@ -98,7 +105,7 @@ function afficherContenu(dataJson) {
 
         monACard.addEventListener('click', (event) => {
             event.preventDefault();
-            ajouterAuPanier(dataJson[i].pizza_nom, count, dataJson[i].pizza_prix);
+            ajouterAuPanier(dataJson[i].nom_pizza, count, dataJson[i].prix_pizza);
         });
     }
 }
@@ -110,7 +117,7 @@ function updateCount(counterElement, count) {
 function ajouterAuPanier(pizzaName, quantite, prix) {
     if (quantite > 0) {
         const li = document.createElement('li');
-        li.textContent = `${pizzaName} x${quantite} - ${prix * quantite}€`;
+        li.textContent = `${pizzaName} x${quantite} - ${parseFloat(prix * quantite).toFixed(2)}€`;
         votrePanier.appendChild(li);
 
         totalAPayer += prix * quantite;
