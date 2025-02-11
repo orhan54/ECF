@@ -95,7 +95,11 @@ class ClientDAO implements DAOInterface {  // Correction: implements DAOInterfac
     public function readAll(): array {  // Correction: arraay -> array
         try {
             $db = Database::getInstance();
-            $query = $db->prepare("SELECT * FROM `client`");  // Correction: Sélection de toutes les colonnes
+            $query = $db->prepare("SELECT * FROM `client`
+                                    JOIN commande
+                                    ON client.id_client = commande.id_client
+                                    JOIN pizza
+                                    ON commande.id_pizza = pizza.id_pizza");
             $query->execute();
             
             return $query->fetchAll(\PDO::FETCH_CLASS, ClientEntity::class);

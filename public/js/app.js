@@ -14,20 +14,10 @@ const additionalFields = document.getElementById('additionalFields');
 
 // recuperation des donnees json en retour d'un tableau
 (async function recuperDonnees() {
-    try {
-        const response = await fetch("/PHP/ECF/ECF/src/index.php?route=pizza");
-        if (!response.ok) {
-            throw new Error('Problème lors de la récupération des données');
-        }
-        const dataJson = await response.json();
-        console.log(dataJson);
-
-        tabJson = dataJson;
-        afficherContenu(tabJson); // appel de ma fonction qui recupere mes donnees en parametre du tableau json
-
-    } catch (erreur) {
-        console.error('Erreur lors de la récupération des données:', erreur);
-    }
+    let response = await fetch('PHP/ECF/ECF/src/index.php?route=pizzas');
+    let dataJson = await response.json();
+    tabJson = dataJson;
+    afficherContenu(tabJson);
 }());
 
 // creation des cards avec les donnes recuperer de mon tableau de donnees json avec la function(async recupererDonnees)

@@ -12,7 +12,7 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <script type="module" src="/public/js/app.js"></script>
+    <script type="module" src="/PHP/ECF/ECF/public/js/app.js"></script>
     <link rel="stylesheet" href="/PHP/ECF/ECF/public/css/style.css">
     <title><?= $title ?></title>
 </head>

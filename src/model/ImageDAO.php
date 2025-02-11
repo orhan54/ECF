@@ -66,7 +66,9 @@ class ImageDAO implements DAOInterface {
     public function readAll(): array {
         try {
             $db = Database::getInstance();
-            $req = $db->query("SELECT * FROM `image`");
+            $req = $db->query("SELECT * FROM `image`
+                                JOIN pizza
+                                ON image.id_pizza = pizza.id_pizza");
             $result = $req->fetchAll(\PDO::FETCH_ASSOC);
             $images = [];
             foreach ($result as $data) {
