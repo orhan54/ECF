@@ -14,9 +14,10 @@ const additionalFields = document.getElementById('additionalFields');
 
 // recuperation des donnees json en retour d'un tableau
 (async function recuperDonnees() {
-    let response = await fetch('PHP/ECF/ECF/src/index.php?route=pizzas');
-    let dataJson = await response.json();
-    tabJson = dataJson;
+    let response = await fetch('index.php?route=pizza')
+    .then(response => response.json())
+    const data =response;
+    tabJson = data;
     afficherContenu(tabJson);
 }());
 
@@ -133,13 +134,13 @@ function filtrePizza(event) {
 
 // Ajout de l'événement click pour le bouton "Créer compte"
 creerCompteBtn.addEventListener('click', () => {
-    additionalFields.style.display = 'block';
+    creationCompte.style.display = 'block';
     annulerBtn.style.display = 'inline-block';
 });
 
 // Ajout de l'événement click pour le bouton "Annuler"
 annulerBtn.addEventListener('click', () => {
-    additionalFields.style.display = 'none';
+    creationCompte.style.display = 'none';
     creerCompteBtn.style.display = 'inline-block';
     document.getElementById('connexionForm').reset();
 });

@@ -17,10 +17,10 @@ class PizzaDAO implements DAOInterface {
 
     public function readAll(): array {
         $sql = 'SELECT * FROM pizza
-                JOIN compose
-                ON pizza.id_pizza = compose.id_pizza
-                JOIN ingredient
-                ON compose.id_ingredient = ingredient.id_ingredient
+                -- JOIN compose
+                -- ON pizza.id_pizza = compose.id_pizza
+                -- JOIN ingredient
+                -- ON compose.id_ingredient = ingredient.id_ingredient
                 JOIN base
                 ON pizza.id_base = base.id_base';
         $stmt = $this->pdo->query($sql);
