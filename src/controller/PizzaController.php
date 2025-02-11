@@ -14,7 +14,7 @@ class PizzaController implements ControllerInterface {
 
     public function doGET() {
         $title = "Pizza";
-        $pizzas = $this->pizzaDAO->findAll();
+        $pizzas = $this->pizzaDAO->readAll();
         header('Content-Type: application/json');
         echo json_encode($pizzas);
     }

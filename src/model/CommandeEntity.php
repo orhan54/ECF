@@ -5,10 +5,20 @@ namespace App\model;
 use App\model\AbstractEntity;
 
 class CommandeEntity extends AbstractEntity {
+    private int $id_commande;
     private int $id_pizza;
     private int $id_client;
     private int $quantite_commande;
     private string $date_commande;
+
+    public function getId(): int {
+        return $this->id_commande;
+    }
+
+    public function setId(int $id): self {
+        $this->id_commande = $id;
+        return $this;
+    }
 
     public function getPizzaId(): int {
         return $this->id_pizza;

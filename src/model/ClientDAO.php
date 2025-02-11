@@ -59,7 +59,7 @@ class ClientDAO implements DAOInterface {  // Correction: implements DAOInterfac
      * @return AbstractEntity
      * @throws ModelException
      */
-    public function readOne(int $id): AbstractEntity {  // Correction: readeOne -> readOne
+    public function readOne(int $id): AbstractEntity { 
         try {
             $db = Database::getInstance();
             $query = $db->prepare("SELECT * FROM `client` WHERE id_client = ?");

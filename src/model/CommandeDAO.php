@@ -28,6 +28,7 @@ class CommandeDAO implements DAOInterface {
         $result = $stmt->fetch(\PDO::FETCH_ASSOC);
         $commande = new CommandeEntity();
         $commande
+            ->setId($result['id_commande'])
             ->setPizzaId($result['id_pizza'])
             ->setClientId($result['id_client'])
             ->setCommandeQuantite($result['quantite_commande'])
@@ -58,13 +59,12 @@ class CommandeDAO implements DAOInterface {
             throw new ModelException("Type d'entité invalidee");
         }
 
-        $sql = 'UPDATE commande SET quantite_commande = ?, date_commande = ? WHERE id_client = ? AND id_pizza = ?';
+        $sql = 'UPDATE commande SET quantite_commande = ?, date_commande = ? WHERE id_commande = ?';
         $stmt = $this->pdo->prepare($sql);
         return $stmt->execute([
+            $entity->getId(),
             $entity->getCommandeQuantite(),
-            $entity->getCommandeDate(), 
-            $entity->getClientId(),
-            $entity->getPizzaId()
+            $entity->getCommandeDate()
         ]);
     }
 
@@ -73,7 +73,7 @@ class CommandeDAO implements DAOInterface {
             throw new ModelException("Type d'entité invalide");
         }
 
-        $sql = 'DELETE FROM commande WHERE id_client = ? AND id_pizza = ?';
+        $sql = 'DELETE FROM commande WHERE id_commande = ?';
         $stmt = $this->pdo->prepare($sql);
         return $stmt->execute([$entity->getClientId()]);
     }
