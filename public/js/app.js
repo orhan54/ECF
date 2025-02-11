@@ -17,7 +17,7 @@ const additionalFields = document.getElementById('additionalFields');
     try {
         const response = await fetch("/PHP/ECF/ECF/src/index.php?route=pizza");
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            throw new Error('Problème lors de la récupération des données');
         }
         const dataJson = await response.json();
         console.log(dataJson);
