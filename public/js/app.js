@@ -2,6 +2,7 @@
 
 let tabJson = [];
 let totalAPayer = 0;
+let panier = new Map();
 
 // Creation des const pour mon html
 const monContenu = document.getElementById('mon-contenu');
@@ -105,6 +106,8 @@ function afficherContenu(dataJson) {
         monACard.addEventListener('click', (event) => {
             event.preventDefault();
             ajouterAuPanier(dataJson[i].nom_pizza, count, dataJson[i].prix_pizza);
+            updateCount(counterElement, 0);
+            count = 0;
         });
     }
 }
@@ -115,12 +118,21 @@ function updateCount(counterElement, count) {
 
 function ajouterAuPanier(pizzaName, quantite, prix) {
     if (quantite > 0) {
-        const li = document.createElement('li');
-        li.textContent = `${pizzaName} x${quantite} - ${parseFloat(prix * quantite).toFixed(2)}€`;
-        votrePanier.appendChild(li);
-
+        if(panier.has(pizzaName)) {
+            panier.set(pizzaName, panier.get(pizzaName) + quantite);
+            const li = document.getElementById(pizzaName);
+            li.textContent = `${pizzaName} x${panier.get(pizzaName)} - ${parseFloat(prix * panier.get(pizzaName)).toFixed(2)}€`;
+        } else {
+            const li = document.createElement('li');
+            li.setAttribute('id', pizzaName);
+            li.textContent = `${pizzaName} x${quantite} - ${parseFloat(prix * quantite).toFixed(2)}€`;
+            votrePanier.appendChild(li);
+            panier.set(pizzaName, quantite);
+        }
+        console.log(panier.entries());
         totalAPayer += prix * quantite;
         totalElement.textContent = `Montant total à régler: ${totalAPayer.toFixed(2)}€`;
+        panierToJson();
     }
 }
 
@@ -159,3 +171,18 @@ annulerBtn.addEventListener('click', () => {
     creerCompteBtn.style.display = 'inline-block';
     document.getElementById('connexionForm').reset();
 });
+
+// convertit le panier au format json
+function panierToJson() {
+    let panierJson = "{\"commande\":[";
+    let lastPizza = panier.keys().toArray();
+    lastPizza = lastPizza[lastPizza.length-1];
+    panier.forEach((value,key,map) => {
+        panierJson += "{\"nom_pizza\":\"" + key + "\", \"quantité\":" + value + "}";
+        if(key!==lastPizza){
+            panierJson+=",";
+        }
+    });
+    panierJson+="]}";
+    console.log(JSON.parse(panierJson));
+} 
