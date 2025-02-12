@@ -72,7 +72,6 @@ class ClientDAO implements DAOInterface {  // Correction: implements DAOInterfac
             
             $client = new ClientEntity();
             $client
-                ->setId($data['id_client'])
                 ->setClientEmail($data['email_client'])
                 ->setClientPassword($data['mot_de_passe_client'])
                 ->setClientNom($data['nom_client'])

@@ -34,7 +34,7 @@ ob_start();
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form id="connexionForm" action="/?route=register" method="POST">
+                        <form id="connexionForm" action="index.php?route=register" method="POST">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" class="form-control" id="email" placeholder="Entrez votre email">
@@ -61,15 +61,19 @@ ob_start();
                                     <input type="text" class="form-control" id="adresse" placeholder="Entrez votre adresse">
                                 </div>
                                 <div class="mb-3">
-                                        <label for="ville" class="form-label">Ville</label>
-                                        <input type="text" class="form-control" id="ville" placeholder="Entrez votre ville">
+                                    <label for="ville" class="form-label">Ville</label>
+                                    <input type="text" class="form-control" id="ville" placeholder="Entrez votre ville">
                                 </div>
+                                <button type="submit" class="btn btn-success">valider</button>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                        <button type="button" class="btn btn-primary">Se connecter</button>
+                        <form action="index.php?route=login" method="POST">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                            <button type="submit" class="btn btn-primary">Se connecter</button>
+                        </form>
+
                     </div>
                 </div>
             </div>
@@ -115,7 +119,7 @@ ob_start();
     <div id="mon-contenu" class="row">
 
         <!-- Ici seront affichées les pizzas -->
-        
+
     </div>
 </section>
 

@@ -23,14 +23,11 @@ const additionalFields = document.getElementById('additionalFields');
     } catch (error) {
         console.error('Erreur lors de la récupération des données', error);
     }
-
 }());
 
 // creation des cards avec les donnes recuperer de mon tableau de donnees json avec la function(async recupererDonnees)
 function afficherContenu(dataJson) {
     monContenu.innerHTML = ""; // Vider le conteneur avant d'ajouter les nouvelles cartes
-
-    console.log(dataJson);
 
     for (let i = 0; i < dataJson.length; i++) {
         const maCard = document.createElement('div');
@@ -57,10 +54,10 @@ function afficherContenu(dataJson) {
         plusAPizza.setAttribute("id", "compt-plus");
         let plusCard = document.createElement('i');
         let prixCard = document.createElement('p');
-        prixCard.textContent = parseFloat(dataJson[i].prix_pizza + "€").toFixed(2);
+        prixCard.textContent = parseFloat(dataJson[i].prix_pizza).toFixed(2) + " €";
 
         maCard.classList.add("card");
-        maCard.classList.add("mb-3");
+        maCard.classList.add("mb-4");
         monImageCard.classList.add("card-img-top");
         monCardBody.classList.add("card-body");
         monH5Card.classList.add("card-title");
@@ -134,7 +131,7 @@ function filtrePizza(event) {
     if (valuePizza === "all") {
         afficherContenu(tabJson);
     } else {
-        let tabDonnees = tabJson.filter(pizza => pizza.base === valuePizza);
+        let tabDonnees = tabJson.filter(pizza => pizza.id_base === valuePizza);
         afficherContenu(tabDonnees);
     }
 }

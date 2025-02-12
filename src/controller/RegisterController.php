@@ -31,7 +31,7 @@ class RegisterController implements ControllerInterface {
     public function doGET(): void {
         // affiche le formulaire d'inscription
         $title = "Inscription";
-        include("./view/home.php");
+        include("./src/view/home.php");
     }
     
     /**
