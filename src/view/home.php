@@ -28,22 +28,27 @@ ob_start();
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="connexionModalLabel">Connexion<i class="bi bi-person p-2 h4"></i></h5>
+                        <h5 class="modal-title"><span id="connexionModalLabel">Connexion</span><i class="bi bi-person p-2 h4"></i></h5>
                         <button type="button" class="btn btn-secondary ms-2" id="creerCompteBtn">Créer compte</button>
-                        <button type="button" class="btn btn-danger ms-2" id="annulerBtn">Annuler</button>
+                        <button type="button" class="btn btn-danger ms-2" id="annulerBtn" style="display: none;">Annuler</button>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form id="connexionForm" action="index.php?route=register" method="POST">
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="Entrez votre email">
-                            </div>
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Mot de passe</label>
-                                <input type="password" class="form-control" id="password" placeholder="Entrez votre mot de passe">
-                            </div>
-                            <div id="creationCompte" style="display: none;">
+                        <div id="connexion">
+                            <form action="index.php?route=login" method="POST">
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Entrez votre email">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Mot de passe</label>
+                                    <input type="password" class="form-control" id="password" placeholder="Entrez votre mot de passe">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Se connecter</button>
+                            </form>
+                        </div>
+                        <div id="creationCompte" style="display: none;">
+                            <form id="connexionForm" action="index.php?route=register" method="POST">
                                 <div class="mb-3">
                                     <label for="nom" class="form-label">Nom</label>
                                     <input type="text" class="form-control" id="nom" placeholder="Entrez votre nom">
@@ -64,16 +69,9 @@ ob_start();
                                     <label for="ville" class="form-label">Ville</label>
                                     <input type="text" class="form-control" id="ville" placeholder="Entrez votre ville">
                                 </div>
-                                <button type="submit" class="btn btn-success">valider</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <form action="index.php?route=login" method="POST">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                            <button type="submit" class="btn btn-primary">Se connecter</button>
-                        </form>
-
+                                <button type="submit" class="btn btn-success">s'enregister</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -108,8 +106,8 @@ ob_start();
         <label class="input-group-text ms-5 mt-3" for="filtre-pizza">Options</label>
         <select id="pizzaFiltreValue" class="form-select me-5 mt-3">
             <option value="all" selected>Toutes les pizzas</option>
-            <option value="1">Base crème</option>
-            <option value="2">Base tomate</option>
+            <option value="crême">Base crème</option>
+            <option value="tomate">Base tomate</option>
             <!-- <option value="3">Végétarienne</option> -->
         </select>
     </div>

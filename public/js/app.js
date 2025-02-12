@@ -11,6 +11,8 @@ const totalElement = document.getElementById('totalAPayer');
 const creerCompteBtn = document.getElementById('creerCompteBtn');
 const annulerBtn = document.getElementById('annulerBtn');
 const additionalFields = document.getElementById('additionalFields');
+const connnexionForm = document.getElementById('connexion');
+const creationCompteLabel = document.getElementById('connexionModalLabel'); // Titre du modal
 
 // recuperation des donnees json en retour d'un tableau
 (async function recuperDonnees() {
@@ -130,20 +132,29 @@ function filtrePizza(event) {
     let valuePizza = monFiltre.value;
     if (valuePizza === "all") {
         afficherContenu(tabJson);
+        console.log(tabJson);
     } else {
-        let tabDonnees = tabJson.filter(pizza => pizza.id_base === valuePizza);
+        let tabDonnees = tabJson.filter(pizza => pizza.nom_base === valuePizza);
         afficherContenu(tabDonnees);
+        console.log(tabDonnees);
+        
     }
 }
 
 // Ajout de l'événement click pour le bouton "Créer compte"
 creerCompteBtn.addEventListener('click', () => {
+    creationCompteLabel.textContent = 'Créer un compte';
+    connnexionForm.style.display = 'none';
+    creerCompteBtn.style.display = 'none';
     creationCompte.style.display = 'block';
     annulerBtn.style.display = 'inline-block';
 });
 
 // Ajout de l'événement click pour le bouton "Annuler"
 annulerBtn.addEventListener('click', () => {
+    creationCompteLabel.textContent = 'Connexion';
+    connnexionForm.style.display = 'block';
+    annulerBtn.style.display = 'none';
     creationCompte.style.display = 'none';
     creerCompteBtn.style.display = 'inline-block';
     document.getElementById('connexionForm').reset();
