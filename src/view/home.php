@@ -37,6 +37,19 @@ ob_start();
                         <div id="connexion">
                             <form action="index.php?route=login" method="POST">
                                 <div class="mb-3">
+                                    <label for="emailConnect" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="emailConnect" placeholder="Entrez votre email">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="passwordConnect" class="form-label">Mot de passe</label>
+                                    <input type="password" class="form-control" id="passwordConnect" placeholder="Entrez votre mot de passe">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Se connecter</button>
+                            </form>
+                        </div>
+                        <div id="creationCompte" style="display: none;">
+                            <form id="connexionForm" action="index.php?route=register" method="POST">
+                                <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
                                     <input type="email" class="form-control" id="email" placeholder="Entrez votre email">
                                 </div>
@@ -44,11 +57,6 @@ ob_start();
                                     <label for="password" class="form-label">Mot de passe</label>
                                     <input type="password" class="form-control" id="password" placeholder="Entrez votre mot de passe">
                                 </div>
-                                <button type="submit" class="btn btn-primary">Se connecter</button>
-                            </form>
-                        </div>
-                        <div id="creationCompte" style="display: none;">
-                            <form id="connexionForm" action="index.php?route=register" method="POST">
                                 <div class="mb-3">
                                     <label for="nom" class="form-label">Nom</label>
                                     <input type="text" class="form-control" id="nom" placeholder="Entrez votre nom">

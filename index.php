@@ -15,11 +15,13 @@ use App\Router;
 use App\controller\HomeController;
 use App\controller\RegisterController;
 use App\controller\PizzaController;
+use App\controller\LoginController;
 
 // enregistre les routes qui pointent vers les classes de contrôleurs
 Router::addRoute("home", new HomeController());
 Router::addRoute("register", new RegisterController());
 Router::addRoute("pizza", new PizzaController());
+Router::addRoute("login", new LoginController());
 
 // une fois les routes enregistrées demande au routeur de déléguer la requête
 Router::delegate();

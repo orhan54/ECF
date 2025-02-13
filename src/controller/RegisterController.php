@@ -38,14 +38,14 @@ class RegisterController implements ControllerInterface {
      * Traite les requêtes HTTP envoyées par la méthode POST
      * @return void
      */
-    public function doPOST() {
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $nom = $_POST['nom'];
-        $prenom = $_POST['prenom'];
-        $telephone = $_POST['telephone'];
-        $adresse = $_POST['adresse'];
-        $ville = $_POST['ville'];
+    public function doPOST(): void {
+        $email = $_POST['email_client'] ?? null;
+        $password = $_POST['mot_de_passe_client'] ?? null;
+        $nom = $_POST['nom_client'] ?? null;
+        $prenom = $_POST['prenom_client'] ?? null;
+        $telephone = $_POST['telephone_client'] ?? null;
+        $adresse = $_POST['adresse_client'] ?? null;
+        $ville = $_POST['ville_client'] ?? null;
         $newClient = new ClientEntity();
         $newClient
             ->setClientEmail($email)
@@ -56,6 +56,6 @@ class RegisterController implements ControllerInterface {
             ->setClientAdresse($adresse)
             ->setClientVille($ville);
         $this->model->create($newClient);
-        Router::redirect("GET", "/");
+        Router::redirect("POST", "/home");
     }
 }
