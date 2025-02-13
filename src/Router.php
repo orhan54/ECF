@@ -28,6 +28,30 @@ class Router
     }
 
     /**
+     * Délegue le traitement de la requête au contrôlleur et à sa méthode appropriée
+     * @throws ControllerException Si la route demandée n'existe pas
+     * @return void
+     */
+    public static function delegate(): void {
+        $route = $_GET['route'] ?? 'home';
+        $method = $_SERVER['REQUEST_METHOD'];
+
+        if (!isset(self::$routes[$route])) {
+            throw new ControllerException("Route non trouvée");
+        }
+
+        $controller = self::$routes[$route];
+
+        if ($method === 'GET') {
+            $controller->doGET();
+        } elseif ($method === 'POST') {
+            $controller->doPOST();
+        } else {
+            throw new ControllerException("Méthode HTTP non supportée");
+        }
+    }
+
+    /**
      * Redirige l'application vers une route avec la méthode spécifiée
      * @param string $method Méthode HTTP
      * @param string $route
@@ -35,26 +59,11 @@ class Router
      * @return void
      */
     public static function redirect(string $method, string $route): void {
-        if (array_key_exists($route, self::$routes)) {
-            $controller = self::$routes[$route];
-            if ($method === "POST") {
-                $controller->doPOST();
-            } else {
-                $controller->doGET();
-            }
+        if ($method === 'POST') {
+            header("Location: index.php?route=$route");
+            exit();
         } else {
-            throw new ControllerException("La route demandée n'existe pas");
+            throw new ControllerException("Redirection non supportée pour la méthode $method");
         }
-    }
-
-    /**
-     * Délegue le traitement de la requête au contrôlleur et à sa méthode appropriée
-     * @throws ControllerException Si la route demandée n'existe pas
-     * @return void
-     */
-    public static function delegate(): void {
-        $method = $_SERVER["REQUEST_METHOD"];
-        $route  = $_GET["route"] ?? "home";
-        self::redirect($method, $route);
     }
 }

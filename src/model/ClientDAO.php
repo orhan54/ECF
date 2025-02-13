@@ -20,36 +20,20 @@ class ClientDAO implements DAOInterface {  // Correction: implements DAOInterfac
         $client = $entity;
         try {
             $db = Database::getInstance();
-            $req = $db->prepare("INSERT INTO `client` (
-                email_client, 
-                mot_de_passe_client, 
-                nom_client,
-                prenom_client, 
-                telephone_client,
-                adresse_client, 
-                ville_client
-            ) VALUES (?, ?, ?, ?, ?, ?, ?)");
-            
-            $hashedPassword = password_hash($client->getClientPassword(), PASSWORD_DEFAULT);
-            
-            $done = $req->execute([
+            $query = $db->prepare("INSERT INTO clients (email, password, nom, prenom, telephone, adresse, ville) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $query->execute([
                 $client->getClientEmail(),
-                $hashedPassword,
+                $client->getClientPassword(),
                 $client->getClientNom(),
                 $client->getClientPrenom(),
                 $client->getClientTelephone(),
                 $client->getClientAdresse(),
                 $client->getClientVille()
             ]);
-            
-            if (!$done) {
-                throw new ModelException("Erreur lors de l'enregistrement du client en BDD");
-            }
-            
             $client->setId($db->lastInsertId());
             return $client;
         } catch (\PDOException $e) {
-            throw new ModelException("Erreur lors de l'enregistrement du client en BDD: " . $e->getMessage());
+            throw new ModelException("Erreur lors de l'enregistrement du client: " . $e->getMessage());
         }
     }
 

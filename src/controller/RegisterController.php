@@ -7,7 +7,7 @@ use App\model\ClientEntity;
 use App\Router;
 
 /**
- *  Contrôlleur responsable de l'inscription d'un nouvel utiilisateur
+ *  Contrôlleur responsable de l'inscription d'un nouvel utilisateur
  */
 class RegisterController implements ControllerInterface {
 

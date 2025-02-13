@@ -51,31 +51,31 @@ ob_start();
                             <form id="connexionForm" action="index.php?route=register" method="POST">
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Entrez votre email">
+                                    <input type="email" name="email_client" class="form-control" id="email" placeholder="Entrez votre email">
                                 </div>
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Mot de passe</label>
-                                    <input type="password" class="form-control" id="password" placeholder="Entrez votre mot de passe">
+                                    <input type="password" name="mot_de_passe_client" class="form-control" id="password" placeholder="Entrez votre mot de passe">
                                 </div>
                                 <div class="mb-3">
                                     <label for="nom" class="form-label">Nom</label>
-                                    <input type="text" class="form-control" id="nom" placeholder="Entrez votre nom">
+                                    <input type="text" name="nom_client" class="form-control" id="nom" placeholder="Entrez votre nom">
                                 </div>
                                 <div class="mb-3">
                                     <label for="prenom" class="form-label">Prénom</label>
-                                    <input type="text" class="form-control" id="prenom" placeholder="Entrez votre prénom">
+                                    <input type="text" name="prenom_client" class="form-control" id="prenom" placeholder="Entrez votre prénom">
                                 </div>
                                 <div class="mb-3">
                                     <label for="telephone" class="form-label">Numéro</label>
-                                    <input type="text" class="form-control" id="telephone" placeholder="Entrez votre numéro">
+                                    <input type="text" name="telephone_client" class="form-control" id="telephone" placeholder="Entrez votre numéro">
                                 </div>
                                 <div class="mb-3">
                                     <label for="adresse" class="form-label">Adresse</label>
-                                    <input type="text" class="form-control" id="adresse" placeholder="Entrez votre adresse">
+                                    <input type="text" name="adresse_client" class="form-control" id="adresse" placeholder="Entrez votre adresse">
                                 </div>
                                 <div class="mb-3">
                                     <label for="ville" class="form-label">Ville</label>
-                                    <input type="text" class="form-control" id="ville" placeholder="Entrez votre ville">
+                                    <input type="text" name="ville_client" class="form-control" id="ville" placeholder="Entrez votre ville">
                                 </div>
                                 <button type="submit" class="btn btn-success">s'enregister</button>
                             </form>
