@@ -20,7 +20,7 @@ class ClientDAO implements DAOInterface {  // Correction: implements DAOInterfac
         $client = $entity;
         try {
             $db = Database::getInstance();
-            $query = $db->prepare("INSERT INTO clients (email, password, nom, prenom, telephone, adresse, ville) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $query = $db->prepare("INSERT INTO clients (email_client, mot_de_passe, nom_client, prenom_client, telephone_client, adresse_client, ville_client) VALUES (?, ?, ?, ?, ?, ?, ?)");
             $query->execute([
                 $client->getClientEmail(),
                 $client->getClientPassword(),
