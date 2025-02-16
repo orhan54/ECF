@@ -45,6 +45,21 @@ class PizzaDAO implements DAOInterface {
         return new PizzaEntity();
     }
 
+    // Recupere la pizza par rapport a son nom
+    public function readOneByName(string $nom_pizza): PizzaEntity {
+        $sql = 'SELECT * FROM pizza WHERE nom_pizza = ?';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$nom_pizza]);
+        $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+        $pizza = new PizzaEntity();
+        $pizza
+            ->setPizzaId($result['id_pizza'])
+            ->setPizzaNom($result['nom_pizza'])
+            ->setPizzaPrix($result['prix_pizza'])
+            ->setPizzaBase($result['id_base']);
+        return new PizzaEntity();
+    }
+
     public function create(AbstractEntity $pizza): PizzaEntity {
         if (!$pizza instanceof PizzaEntity) {
             throw new ModelException("Type d'entité invalide");

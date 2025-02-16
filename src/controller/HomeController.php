@@ -2,6 +2,8 @@
 
 namespace App\controller;
 
+use App\Exceptions\ControllerException;
+
 class HomeController implements ControllerInterface {
 
     public function __construct() {}

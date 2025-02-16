@@ -3,6 +3,7 @@
 namespace App\controller;
 
 use App\model\PizzaDAO;
+use App\Exceptions\ControllerException;
 
 class PizzaController implements ControllerInterface {
 

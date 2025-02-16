@@ -101,7 +101,7 @@ ob_start();
                     </div>
                     <div class="modal-footer">
                         <p><strong id="totalAPayer">Montant total à régler: 0€</strong></p>
-                        <button type="button" class="btn btn-primary">Payer</button>
+                        <button type="button" id="btnPayer" class="btn btn-primary">Payer</button>
                     </div>
                 </div>
             </div>

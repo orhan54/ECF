@@ -14,6 +14,7 @@ const annulerBtn = document.getElementById('annulerBtn');
 const additionalFields = document.getElementById('additionalFields');
 const connnexionForm = document.getElementById('connexion');
 const creationCompteLabel = document.getElementById('connexionModalLabel'); // Titre du modal
+const btnPayerPanier = document.getElementById('btnPayer'); // boutton pour payer le panier
 
 // recuperation des donnees json en retour d'un tableau
 (async function recuperDonnees() {
@@ -132,7 +133,6 @@ function ajouterAuPanier(pizzaName, quantite, prix) {
         console.log(panier.entries());
         totalAPayer += prix * quantite;
         totalElement.textContent = `Montant total à régler: ${totalAPayer.toFixed(2)}€`;
-        panierToJson();
     }
 }
 
@@ -183,6 +183,29 @@ function panierToJson() {
             panierJson+=",";
         }
     });
+
     panierJson+="]}";
-    console.log(JSON.parse(panierJson));
+    return panierJson;
 } 
+
+// Ajout de l'événement click pour le bouton "Payer"
+btnPayerPanier.addEventListener('click', () => {
+    if (panier.size > 0) {
+        fetch("index.php?route=registerPanier", {
+            method: "POST",
+            header: {
+                "Content-type": "application/json; charset=utf-8"
+            },
+            body: panierToJson()
+        })
+        .then((response) => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error('Erreur lors de l\'enregistrement du panier');
+        })
+        .then(data => console.log(data));
+    } else {
+        alert('Votre panier est vide');
+    }
+});

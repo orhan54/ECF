@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\controller\ControllerException;
+use App\Exceptions\RouterException;
 use App\controller\ControllerInterface;
 
 /**
@@ -29,7 +29,7 @@ class Router
 
     /**
      * Délegue le traitement de la requête au contrôlleur et à sa méthode appropriée
-     * @throws ControllerException Si la route demandée n'existe pas
+     * @throws RouterException Si la route demandée n'existe pas
      * @return void
      */
     public static function delegate(): void {
@@ -37,7 +37,7 @@ class Router
         $method = $_SERVER['REQUEST_METHOD'];
 
         if (!isset(self::$routes[$route])) {
-            throw new ControllerException("Route non trouvée");
+            throw new RouterException("Route non trouvée");
         }
 
         $controller = self::$routes[$route];
@@ -47,7 +47,7 @@ class Router
         } elseif ($method === 'POST') {
             $controller->doPOST();
         } else {
-            throw new ControllerException("Méthode HTTP non supportée");
+            throw new RouterException("Méthode HTTP non supportée");
         }
     }
 
@@ -55,7 +55,7 @@ class Router
      * Redirige l'application vers une route avec la méthode spécifiée
      * @param string $method Méthode HTTP
      * @param string $route
-     * @throws \App\controller\ControllerException
+     * @throws RouterException
      * @return void
      */
     public static function redirect(string $method, string $route): void {
@@ -63,7 +63,7 @@ class Router
             header("Location: index.php?route=$route");
             exit();
         } else {
-            throw new ControllerException("Redirection non supportée pour la méthode $method");
+            throw new RouterException("Redirection non supportée pour la méthode $method");
         }
     }
 }

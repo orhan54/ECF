@@ -2,7 +2,6 @@
 
 namespace App\controller;
 
-use App\model\Client;
 use App\model\ClientDAO;
 use App\model\ClientEntity;
 use App\Router;
@@ -24,10 +23,10 @@ class ClientController implements ControllerInterface {
     public function doPOST() {
         try {
             $email = $_POST['email'];
-            $password = $_POST['password'];
+            $password = hash("sha512", $_POST['password']);
             $nom = $_POST['nom'];
             $prenom = $_POST['prenom'];
-            $numero = $_POST['numero'];
+            $telephone = $_POST['telephone'];
             $adresse = $_POST['adresse'];
             $ville = $_POST['ville'];
             $newClient = new ClientEntity();
@@ -36,7 +35,7 @@ class ClientController implements ControllerInterface {
                 ->setClientPassword($password)
                 ->setClientNom($nom)
                 ->setClientPrenom($prenom)
-                ->setClientNumero($numero)
+                ->setClientTelephone($telephone)
                 ->setClientAdresse($adresse)
                 ->setClientVille($ville);
             $this->model->create($newClient);
