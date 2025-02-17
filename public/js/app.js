@@ -20,7 +20,7 @@ const btnPayerPanier = document.getElementById('btnPayer'); // boutton pour paye
 (async function recuperDonnees() {
     try {
         let response = await fetch('index.php?route=pizza')
-        .then(response => response.json())
+            .then(response => response.json())
         const data = response;
         tabJson = data;
         afficherContenu(tabJson);
@@ -119,7 +119,7 @@ function updateCount(counterElement, count) {
 
 function ajouterAuPanier(pizzaName, quantite, prix) {
     if (quantite > 0) {
-        if(panier.has(pizzaName)) {
+        if (panier.has(pizzaName)) {
             panier.set(pizzaName, panier.get(pizzaName) + quantite);
             const li = document.getElementById(pizzaName);
             li.textContent = `${pizzaName} x${panier.get(pizzaName)} - ${parseFloat(prix * panier.get(pizzaName)).toFixed(2)}€`;
@@ -149,7 +149,7 @@ function filtrePizza(event) {
         let tabDonnees = tabJson.filter(pizza => pizza.nom_base === valuePizza);
         afficherContenu(tabDonnees);
         console.log(tabDonnees);
-        
+
     }
 }
 
@@ -174,38 +174,25 @@ annulerBtn.addEventListener('click', () => {
 
 // convertit le panier au format json
 function panierToJson() {
-    let panierJson = "{\"commande\":[";
-    let lastPizza = panier.keys().toArray();
-    lastPizza = lastPizza[lastPizza.length-1];
-    panier.forEach((value,key,map) => {
-        panierJson += "{\"nom_pizza\":\"" + key + "\", \"quantité\":" + value + "}";
-        if(key!==lastPizza){
-            panierJson+=",";
-        }
+    let panierArray = [];
+    panier.forEach((value, key) => {
+        panierArray.push({ nom_pizza: key, quantité: value });
     });
-
-    panierJson+="]}";
-    return panierJson;
-} 
+    return JSON.stringify({ commande: panierArray });
+}
 
 // Ajout de l'événement click pour le bouton "Payer"
 btnPayerPanier.addEventListener('click', () => {
     if (panier.size > 0) {
         fetch("index.php?route=registerPanier", {
             method: "POST",
-            header: {
-                "Content-type": "application/json; charset=utf-8"
+            headers: {
+                "Content-Type": "application/json; charset=utf-8"
             },
             body: panierToJson()
         })
-        .then((response) => {
-            if (response.ok) {
-                return response.json();
-            }
-            throw new Error('Erreur lors de l\'enregistrement du panier');
-        })
-        .then(data => console.log(data));
-    } else {
-        alert('Votre panier est vide');
+        .then(response => response.text()) // Remplace `json()` par `text()` pour voir la vraie réponse
+        .then(data => console.log("Réponse du serveur :", data))
+        .catch(error => console.error("Erreur lors de l'envoi du panier :", error));
     }
 });

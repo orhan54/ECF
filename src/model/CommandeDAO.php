@@ -26,6 +26,11 @@ class CommandeDAO implements DAOInterface {
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$id]);
         $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+        if (!$result) {
+            throw new ModelException("Commande non trouvée");
+        }
+
         $commande = new CommandeEntity();
         $commande
             ->setId($result['id_commande'])
@@ -33,7 +38,8 @@ class CommandeDAO implements DAOInterface {
             ->setClientId($result['id_client'])
             ->setCommandeQuantite($result['quantite_commande'])
             ->setCommandeDate($result['date_commande']);
-        return new CommandeEntity();
+
+        return $commande;
     }
 
     public function create(AbstractEntity $commande): CommandeEntity {
@@ -41,7 +47,7 @@ class CommandeDAO implements DAOInterface {
             throw new ModelException("Type d'entité invalide");
         }
 
-        $sql = 'INSERT INTO commande (id_pizza, id_client, quantite_commande, date_commande, ) VALUES (?, ?, ?, ?)';
+        $sql = 'INSERT INTO commande (id_pizza, id_client, quantite_commande, date_commande) VALUES (?, ?, ?, ?)';
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([
             $commande->getPizzaId(),
@@ -50,21 +56,21 @@ class CommandeDAO implements DAOInterface {
             $commande->getCommandeDate()
         ]);
         
-        $commande->setClientId($this->pdo->lastInsertId());
+        $commande->setId($this->pdo->lastInsertId());
         return $commande;
     }
 
     public function update(AbstractEntity $entity): bool {
         if (!$entity instanceof CommandeEntity) {
-            throw new ModelException("Type d'entité invalidee");
+            throw new ModelException("Type d'entité invalide");
         }
 
         $sql = 'UPDATE commande SET quantite_commande = ?, date_commande = ? WHERE id_commande = ?';
         $stmt = $this->pdo->prepare($sql);
         return $stmt->execute([
-            $entity->getId(),
             $entity->getCommandeQuantite(),
-            $entity->getCommandeDate()
+            $entity->getCommandeDate(),
+            $entity->getId()
         ]);
     }
 
@@ -75,6 +81,6 @@ class CommandeDAO implements DAOInterface {
 
         $sql = 'DELETE FROM commande WHERE id_commande = ?';
         $stmt = $this->pdo->prepare($sql);
-        return $stmt->execute([$entity->getClientId()]);
+        return $stmt->execute([$entity->getId()]);
     }
 }
