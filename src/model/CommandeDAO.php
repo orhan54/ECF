@@ -83,4 +83,20 @@ class CommandeDAO implements DAOInterface {
         $stmt = $this->pdo->prepare($sql);
         return $stmt->execute([$entity->getId()]);
     }
+
+    // function qui va lire la pizza commandée
+    public function readPizzaCommande(string $nomPizza): array {
+        $sql = 'SELECT id_pizza FROM pizza WHERE nom_pizza = ?';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$nomPizza]);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    // function qui va lire le client qui a commandé
+    public function readClientCommande(string $clientNom): array {
+        $sql = 'SELECT id_client FROM client WHERE nom_client = ?';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$clientNom]);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
 }
